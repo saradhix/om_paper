@@ -1,0 +1,65 @@
+\section[Survey of optimization models of kidney exchange] {Survey of optimization models of kidney exchange \protect\footnote{Authors: I. Vijayasaradhi (201450803) }}
+%\section{Work by I. Vijayasaradhi} 
+Matching Kidneys from donors to recipients in a Unified Kidney Exchange is a NP-hard problem(except if the cycle length is 2). There are many approaches suggested by various authors each giving specific importance to specific aspects of the problem. 
+
+Kidney exchange matching approaches can be classified as two categories - Static and Dynamic approaches. In the static setting, it is assumed that the data present at the kidney exchange does not change, which is rarely true. Static methods can match kidney pair donors and receivers without considering any future aspect of incoming agents. Dynamic methods assume that the donor-recipient dataset present in the kidney exchange changes with time. With time, more donors would get added, some existing donors might drop and previously compatible donor-recipients may become uncompatible due to medical conditions etc.
+\par
+Clearing algorithms can have different set of objectives to optimize. Some approaches try to maximise the length of the cycles or chains without an upper limit on them, while some consider an upper limit on the length of the cycles or chains. Some approaches try to optimize the total cost of waiting for a kidney till a suitable match is found, while some approaches try to optimize the total edge weights by anticipating future incoming agents and make matches after their arrival. 
+\par
+\textbf{D. L. Segev, S. E. Gentry, D. S. Warren, B. Reeb, and R. A. Montgomery. Kidney paired donation and optimizing the use of live donor organs}.\cite{vijay1}
+In this paper, the authors, developed a model that simulates pools of incompatible donor-recipient pairs and designed an optimized matching algorithm and compared it with the scheme currently used in some centers and regions. The optimized matching algorithm could result in more transplants 47.7\% vs 42.0\% and more grafts surviving at 5 years (34.9\% vs 28.7\%; ), and a reduction in the number of pairs required to travel (2.9\% vs 18.4\%;) when compared with an extension of the currently used
+first-accept scheme to a national level. Highly sensitized patients would benefit 6-fold from a national optimized scheme (2.3\% vs 14.1\% successfully matched). The authors claim that even if only 7\% of patients awaiting kidney transplantation participated in an optimized national kidney exchange program, the health care system could save as much as \$750 million. These results are conservative because the simulated market contained only 4000 initial patients, with 250 patients added every 3
+months. The drawback of this algorithm is that the algorithm can not scale above 10000 patients, which is the typical number in a kidney exchange network.
+
+\par 
+\textbf{John P. Dickerson Ariel D. Procaccia Tuomas Sandholm  Optimizing Kidney Exchange with Transplant Chains : Theory and Reality} \cite{vijay2}
+In this paper the authors propose the concept of chains - as opposed to cycles, which prove to be more rugged than the chains which can break if the transplants for all the agents in a given chain are not performed simultaneously. The kidney matching problem is NP-complete for finding chains greater than length 2. For chains of length 3, ILP methods can be applied with branch and price solvers to solve for the optimal solution. Each chain starts with an altruistic donor, who enters the pool without a participating receiver, whose paired donor donates a kidney to another candidate and so on. Chains can be longer than cycles in practice because it is not necessary to carry out all the transplants in a chain simultaneously. There would not be any irrecovable loss in case any agent reneges because a donor donates a kidney only after the corresponding patient has received one. In this paper, the authors claim that the improvements from long chains is drastic when the edge weights are taken into account. The authors further claim that long chains will have negligible effect on the overall cardinality of the matching with high probability and thus optimising for long chains may not be needed. This would result in shorter chains, which require less computational power, and shorter chains are easily to administer and are less likely to fail due to a positive crossmatch or some non-simultaneous donor backing out.
+
+\textbf{Pranjal Awasthi, Tuomas Sandholm Online Stochastic Optimization in the Large: Application to Kidney Exchange}\cite{vijay3}
+Trajectory based online stochastic optimization algorithms inform the matching algorithm of possible futures, thus potentially holding off matching some candidates and donors in an effort to increase overall matches later. Their results are promising but the algorithm does not scale beyond very small exchanges due to the emprical complexity of sampling a large number of future world states, and the memory requirements associated with storing those trajectories and optimizing what to do in the present in light of them.
+
+
+\textbf{John P. Dickerson and Ariel D. Procaccia and Tuomas Sandholm Dynamic Matching via Weighted Myopia with Application to Kidney Exchange }\cite{vijay4}
+In this method, the authors introduce the idea of potentials to capture the future into myopic matching. The concept of potential quantifies the future expected usefulness to the exchange of that kidney. The simulations in this paper also consider the constituion of altruists as 5\% of the number of patient donor pairs. This method shows an improvement of 21.44\% for a sample of 610 patient donor pairs over the standard optimal cardinality match algorithm.
+
+\textbf{M. Utku Unver Dynamic Kidney exchange}\cite{vijay5}
+This paper was first to consider the dynamic aspects of evolution of the exchange pool. This paper suggests a non linear solution where the objective is to minimize the long-run total discounted waiting cost. The authors show that an efficient two-way matching mechanism conducts the maximum number of exchanges as soon as they become available and there is no need to sacrifice one or more currently feasible exchanges for the sake of conducting future exchanges. 
+
+
+
+\textbf{Abraham, Blum, and Sandholm  Clearing Algorithms for Barter Exchange Markets: Enabling Nationwide Kidney Exchanges.}\cite{vijay6}
+In this paper, the authors presented the algorithm which is the most scalable optimal kidney exchange clearing algorithm created to date. An implementation of this algorithm is currently used by the UNOS exchange. Their solver uses branch-and-price, a technique that proves optimality by incrementally generating only a small part of the model during tree search. This method is necessary, as the number of variables in the full integer program is too large to write down in memory. Using this method, the authors were able to clear a market with 10000 patients in about the same time it would otherwise have taken to clear a 6000 patient market.
+
+\newpage
+\section{Work by Team }
+
+
+
+\newpage
+\section{Conclusion}
+
+\addcontentsline{toc}{section}{References}
+\begin{thebibliography}{10}
+\bibitem{nano3}
+  K. Grove-Rasmussen og Jesper Nygård,
+  \emph{Kvantefænomener i Nanosystemer}.
+  Niels Bohr Institute \& Nano-Science Center, Københavns Universitet
+\bibitem{vijay1}
+D. L. Segev, S. E. Gentry, D. S. Warren, B. Reeb, and R. A. Montgomery. Kidney paired donation and optimizing the use of live donor organs
+
+\bibitem{vijay2}
+John P. Dickerson Ariel D. Procaccia Tuomas Sandholm. Optimizing Kidney Exchange with Transplant Chains : Theory and Reality
+
+
+\bibitem{vijay3}
+Pranjal Awasthi, Tuomas Sandholm Online Stochastic Optimization in the Large: Application to Kidney Exchange
+
+\bibitem{vijay4}
+John P. Dickerson and Ariel D. Procaccia and Tuomas Sandholm Dynamic Matching via Weighted Myopia with Application to Kidney Exchange
+
+\bibitem{vijay5}
+M. Utku Unver Dynamic Kidney exchange
+
+\bibitem{vijay6}
+Abraham, Blum, and Sandholm  Clearing Algorithms for Barter Exchange Markets: Enabling Nationwide Kidney Exchanges
+\end{thebibliography}
